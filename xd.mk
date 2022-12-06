@@ -1,4 +1,4 @@
-00$(call inherit-product, vendor/xdroid/config/common.mk)
+$(call inherit-product, vendor/xdroid/config/common.mk)
 $(call inherit-product, vendor/xdroid/config/BoardConfigSoong.mk)
 $(call inherit-product, device/xdroid/sepolicy/common/sepolicy.mk)
 -include vendor/xdroid/build/core/config.mk
