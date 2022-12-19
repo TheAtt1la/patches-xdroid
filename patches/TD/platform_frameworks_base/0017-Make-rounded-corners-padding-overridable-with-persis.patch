@@ -6,15 +6,15 @@ Subject: [PATCH 17/33] Make rounded corners padding overridable with
 
 Change-Id: I481c1c8849b2f22a7cdfb2896a6d3c2e7e3b44d9
 ---
- .../src/com/android/systemui/qs/QuickStatusBarHeader.java  | 7 +++++--
  .../systemui/statusbar/phone/KeyguardStatusBarView.java    | 7 +++++--
+ .../src/com/android/systemui/qs/QuickStatusBarHeader.java  | 7 +++++--
  .../statusbar/phone/StatusBarContentInsetsProvider.kt      | 5 ++++-
  3 files changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
 index 264edb1ec9e4..d8354149bae4 100644
---- a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
-+++ b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
 @@ -36,6 +36,7 @@ import android.os.UserManager;
  import android.provider.Settings;
  import android.util.AttributeSet;
@@ -36,10 +36,10 @@ index 264edb1ec9e4..d8354149bae4 100644
      }
  
      private void updateVisibilities() {
-diff --git a/QuickStatusBarHeader.java b/QuickStatusBarHeader.java
+diff --git a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
 index c83f70c..183bb59 100644
---- a/QuickStatusBarHeader.java
-+++ b/QuickStatusBarHeader.java
+--- a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
++++ b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
 @@ -24,6 +24,7 @@ import android.content.res.Configuration;
  import android.content.res.Resources;
  import android.graphics.Color;
@@ -61,10 +61,10 @@ index c83f70c..183bb59 100644
  
          int statusBarHeight = SystemBarUtils.getStatusBarHeight(mContext);
  
-diff --git a/StatusBarContentInsetsProvider.kt b/StatusBarContentInsetsProvider.kt
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
 index f5462bc..c09ab6d 100644
---- a/StatusBarContentInsetsProvider.kt
-+++ b/StatusBarContentInsetsProvider.kt
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
 @@ -39,6 +39,7 @@ import com.android.systemui.util.leak.RotationUtils.Rotation
  import com.android.systemui.util.leak.RotationUtils.getExactRotation
  import com.android.systemui.util.leak.RotationUtils.getResourcesForRotation
