@@ -6,24 +6,24 @@ Subject: [PATCH 17/33] Make rounded corners padding overridable with
 
 Change-Id: I481c1c8849b2f22a7cdfb2896a6d3c2e7e3b44d9
 ---
- .../systemui/statusbar/phone/KeyguardStatusBarView.java    | 7 +++++--
- .../src/com/android/systemui/qs/QuickStatusBarHeader.java  | 7 +++++--
- .../statusbar/phone/StatusBarContentInsetsProvider.kt      | 5 ++++-
+  .../systemui/statusbar/phone/KeyguardStatusBarView.java        | 7 +++++--
+ .../src/com/android/systemui/qs/QuickStatusBarHeader.java         | 7 +++++--
+ .../statusbar/phone/StatusBarContentInsetsProvider.kt | 5 ++++-
  3 files changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
-index 264edb1ec9e4..d8354149bae4 100644
+index 5119b8f..cc8b2d5 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/KeyguardStatusBarView.java
-@@ -36,6 +36,7 @@ import android.os.UserManager;
- import android.provider.Settings;
+@@ -28,6 +28,7 @@ import android.graphics.Rect;
+ import android.graphics.drawable.Drawable;
  import android.util.AttributeSet;
  import android.util.Pair;
 +import android.os.SystemProperties;
  import android.util.TypedValue;
  import android.view.DisplayCutout;
  import android.view.Gravity;
-@@ -196,8 +197,10 @@ public class KeyguardStatusBarView extends RelativeLayout {
+@@ -187,8 +188,10 @@ public class KeyguardStatusBarView extends RelativeLayout {
                  R.dimen.ongoing_appops_dot_min_padding);
          mCutoutSideNudge = getResources().getDimensionPixelSize(
                  R.dimen.display_cutout_margin_consumption);
@@ -37,20 +37,20 @@ index 264edb1ec9e4..d8354149bae4 100644
  
      private void updateVisibilities() {
 diff --git a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
-index c83f70c..183bb59 100644
+index 7e8a3b9..d2e0fc2 100644
 --- a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
 +++ b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
-@@ -24,6 +24,7 @@ import android.content.res.Configuration;
+@@ -22,6 +22,7 @@ import android.content.res.Configuration;
  import android.content.res.Resources;
  import android.graphics.Color;
  import android.graphics.Rect;
 +import android.os.SystemProperties;
  import android.net.Uri;
- import android.os.UserHandle;
  import android.os.VibrationEffect;
-@@ -339,8 +340,10 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
-         mStatusIconsView.setVisibility(gone ? View.GONE : View.VISIBLE);
-         mDatePrivacyView.setVisibility(gone ? View.GONE : View.VISIBLE);
+ import android.os.Vibrator;
+@@ -275,8 +276,10 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
+ 
+         mConfigShowBatteryEstimate = resources.getBoolean(R.bool.config_showBatteryEstimateQSBH);
  
 -        mRoundedCornerPadding = resources.getDimensionPixelSize(
 -                R.dimen.rounded_corner_content_padding);
@@ -59,9 +59,9 @@ index c83f70c..183bb59 100644
 +            mRoundedCornerPadding = resources.getDimensionPixelSize(
 +                    R.dimen.rounded_corner_content_padding);
  
-         int statusBarHeight = SystemBarUtils.getStatusBarHeight(mContext);
- 
-diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
+         mStatusBarPaddingStart = resources.getDimensionPixelSize(
+                 R.dimen.status_bar_padding_start);
+diff --git a/StatusBarContentInsetsProvider.kt b/packages/SystemUI/src/com/android/systemui/statusbar/phone/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
 index f5462bc..c09ab6d 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
